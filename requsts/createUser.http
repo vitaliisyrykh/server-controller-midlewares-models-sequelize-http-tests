@@ -1,0 +1,10 @@
+POST http://localhost:3007/createUser HTTP/1.1
+Content-type: application/json
+
+{
+  "name": "Jhon",
+  "email": "john@example.com",
+  "password": "testPassword",
+  "genders": "male",
+  "age": "23"
+}

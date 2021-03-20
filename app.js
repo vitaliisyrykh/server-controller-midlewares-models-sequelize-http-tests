@@ -1,15 +1,12 @@
 const express = require('express');
+const {validateBody} = require('./middleware/validateUser.mw');
+const {createUser} = require('./controller/uesrController');
 
 const app = express();
+const bodyParsing = express.json();
 
-app.get('/', (req, res) => {
-  console.log('requst acepted');
-  res.send('<h1> HELP </h1>')
-});
+app.post('/createUser', bodyParsing,validateBody, createUser );
 
-app.post('/signin', (req, res) => {
-  res.send('pfhtutcnhbhjdfy')
-});
-app.listen(3004, ()=>{
-  console.log("Server start§");
+app.listen(3007, () => {
+    console.log('Server start');
 });
