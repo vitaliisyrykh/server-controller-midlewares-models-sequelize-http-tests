@@ -26,13 +26,23 @@ module.exports.getUser = async (req, res, next) => {
 module.exports.findAll = async (req, res, next) => {
     try {
         const allUsers = User.findAll();
-        res.send(allUsers);
+        return res.send(allUsers);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-module.exports.updateUser = async (req,res,next)=>{
+module.exports.findOne = async (req, res, next) => {
+  try{
+    const {params} = req;
+    const user = User.findOne(params.id);
+    res.send(user)
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+}
+
+/* module.exports.updateUser = async (req,res,next)=>{
   try{
     const {params, body} = req;
 
@@ -42,4 +52,4 @@ module.exports.updateUser = async (req,res,next)=>{
   }
 
 
-}
+} */

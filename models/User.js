@@ -9,6 +9,7 @@ class User {
         this.id = `${db.size+1}`;
 
         db.set(this.id, this);
+        console.log(db.values());
 
         return Promise.resolve(this);
     }
@@ -18,11 +19,13 @@ class User {
     }
 
     async delete () {
+      
         return db.delete(this.id);
     }
 
     static findAll = async () => {
-        return [...db.values()];
+       console.log(db.values()); 
+        return [{1:3}];
     };
 
     static findOne = async (id) => {
