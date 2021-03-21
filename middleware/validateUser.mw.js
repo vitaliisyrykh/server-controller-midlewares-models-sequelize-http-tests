@@ -8,7 +8,7 @@ const validationSchemes = yup.object({
         .required(),
     password: yup.string().required(),
     genders: yup.string().required(),
-    age: yup.string().required(),
+    age: yup.string(),
 });
 
 module.exports.validateBody = async (req, res, next) => {
