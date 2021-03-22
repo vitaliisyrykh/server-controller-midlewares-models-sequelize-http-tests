@@ -6,6 +6,6 @@ Content-Type: application/json
   "name": "UPDATED JSON",
   "email": "t1@gmail.com",
   "password": "Test123Test$",
-  "gender": "male",
+  "genders": "male",
   "age":"25"
 }

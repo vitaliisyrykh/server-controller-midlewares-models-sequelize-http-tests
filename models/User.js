@@ -32,7 +32,7 @@ class User {
         return [...db.values()];
     }
 
-    static  findOne = async (id)=> {
+    static  getUser = async (id)=> {
         console.log(db.get(id));
         return db.get(id);
     }

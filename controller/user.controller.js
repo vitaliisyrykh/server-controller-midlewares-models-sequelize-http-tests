@@ -22,7 +22,8 @@ module.exports.findAll = async (req, res, next) => {
 module.exports.findOne = async (req, res, next) => {
     try {
         const { params } = req;
-        const user = await User.findOne(params.id);
+        console.log(params);
+        const user = await User.getUser(params.id);
         if (user) {
             return res.send(user);
         }
@@ -36,7 +37,7 @@ module.exports.updateUser = async (req, res, next) => {
     try {
         const { params, body } = req;
         
-        const foundUser = await User.findOne(params.id);
+        const foundUser = await User.getUser(params.id);
         console.log(foundUser);
         const updateUser = await foundUser.update(body);
         const responseUser = JSON.stringify(updateUser);
@@ -46,6 +47,15 @@ module.exports.updateUser = async (req, res, next) => {
     }
 };
 
-module.exports.delete = async (req, res, next) => {
-
-}
+module.exports.deleteUser = async (req, res, next) => {
+    try {
+      const { params } = req
+  
+      const foundUser = await User.getUser(params.id)
+      const verdict = await foundUser.delete()
+  
+      res.status(200).send({ verdict })
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+  }
