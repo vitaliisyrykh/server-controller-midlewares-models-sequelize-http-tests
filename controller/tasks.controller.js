@@ -39,12 +39,27 @@ module.exports.updateTask = async (req, res, next) => {
 
         const foundTask = await Tasks.findTask(params.id);
         console.log(foundTask);
-        const updateTask = await foundTask.update(body);
+        const updateTask = await foundTask.updateTask(body);
         const responseTask = JSON.stringify(updateTask);
         res.status(202).end(responseTask);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
+
+module.exports.deleteTask = async (req, res, next) => {
+    try {
+        const { params } = req
+    
+        const foundTask = await Tasks.findTask(params.id)
+        console.log(foundTask);
+        const verdict = await foundTask.delete()
+    
+        res.status(200).send({ verdict })
+      } catch (error) {
+        res.status(400).send(error.message)
+      }
+}
+
 
 

@@ -38,7 +38,7 @@ module.exports.updateUser = async (req, res, next) => {
         const { params, body } = req;
         
         const foundUser = await User.getUser(params.id);
-        console.log(foundUser);
+        
         const updateUser = await foundUser.update(body);
         const responseUser = JSON.stringify(updateUser);
         res.status(202).end(responseUser);

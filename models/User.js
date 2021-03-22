@@ -19,9 +19,7 @@ class User {
         return db.get(this.id);
     }
 
-    async delete () {
-        return db.delete(this.id);
-    }
+   
 
     async delete () {
         return db.delete(this.id);
@@ -33,7 +31,7 @@ class User {
     }
 
     static  getUser = async (id)=> {
-        console.log(db.get(id));
+        
         return db.get(id);
     }
 }

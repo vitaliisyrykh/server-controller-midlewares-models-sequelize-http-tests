@@ -12,19 +12,20 @@ class Tasks {
         return Promise.resolve(this);
     }
 
-    async update ({ body, userId }) {
-        db.set(this.id, { body, userId });
-        db.get(this.id);
-    }
-
+    
     static findTask = async (id) => {
-        console.log(db);
+        
         return db.get(id);
     };
-
+    
     static allTasks = async () => {
         return [...db.values()];
     };
+    async updateTask ({ body}) {
+        console.log("update");
+        db.set(this.id, { body });
+        db.get(this.id);
+    }
 
     async isDone (id) {
         db.set(id, { isDone: !isDone });
