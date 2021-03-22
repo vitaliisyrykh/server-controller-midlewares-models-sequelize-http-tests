@@ -13,7 +13,8 @@ const {
     findOneTask,
     getTasks,
     updateTask,
-    deleteTask
+    deleteTask,
+    taskIsDone
 } = require('./controller/tasks.controller');
 
 const app = express();
@@ -28,7 +29,8 @@ app.delete('/user/:id', deleteUser);
 app.post('/createTask', bodyParsing, validateBodyTasks, createTask);
 app.get('/tasks', getTasks);
 app.get('/task/:id', findOneTask);
-app.patch('/task/:id', updateTask);
+app.patch('/task/:id',bodyParsing,validateBodyTasks, updateTask);
+app.patch('/taskIsDone/:id', taskIsDone);
 app.delete('/task/:id', deleteTask);
 
 app.listen(3036, () => {

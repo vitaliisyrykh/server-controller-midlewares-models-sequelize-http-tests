@@ -24,16 +24,16 @@ class Tasks {
     async updateTask ({ body}) {
         console.log("update");
         db.set(this.id, { body });
-        db.get(this.id);
+      return  db.get(this.id);
     }
 
     async isDone (id) {
         db.set(id, { isDone: !isDone });
-        db.get(id);
+      return  db.get(id);
     }
 
     async delete () {
-        db.delete(this.id);
+      return db.delete(this.id);
     }
 }
 
